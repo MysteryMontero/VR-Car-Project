@@ -5,6 +5,7 @@ public class Car_Manager : MonoBehaviour
     public float maxSpeed = 20f;       // Maximum forward speed
     public float acceleration = 5f;   // How quickly the car accelerates
     public float deceleration = 10f;  // How quickly the car slows down when not accelerating
+    public float brakeForce = 20f;    // How strong the braking is
     public float turnSpeed = 50f;     // Turning speed
     public float drag = 2f;           // Natural slowing effect when no input is applied
     public Transform steer;
@@ -27,15 +28,23 @@ public class Car_Manager : MonoBehaviour
         inputVertical = Input.GetAxis("Vertical");   // W/S or Up/Down keys
         inputHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right keys
 
-        // Accelerate or decelerate based on input
-        if (inputVertical != 0)
+        // Check for braking input
+        if (Input.GetKey(KeyCode.Q)) // Brake when "Q" is pressed
         {
-            currentSpeed += inputVertical * acceleration * Time.deltaTime;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, brakeForce * Time.deltaTime);
         }
         else
         {
-            // Gradually slow down when no input is given
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
+            // Accelerate or decelerate based on input
+            if (inputVertical != 0)
+            {
+                currentSpeed += inputVertical * acceleration * Time.deltaTime;
+            }
+            else
+            {
+                // Gradually slow down when no input is given
+                currentSpeed = Mathf.MoveTowards(currentSpeed, 0, deceleration * Time.deltaTime);
+            }
         }
 
         // Clamp the speed to the maximum allowed
