@@ -7,7 +7,6 @@ public class Car_Manager : MonoBehaviour
     public float deceleration = 10f;  // How quickly the car slows down when not accelerating
     public float brakeForce = 20f;    // How strong the braking is
     public float turnSpeed = 50f;     // Turning speed
-    public float drag = 2f;           // Natural slowing effect when no input is applied
     public Transform steer;
 
     private Rigidbody rb;
@@ -19,7 +18,7 @@ public class Car_Manager : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.drag = drag; // Set drag for realistic slowing
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ; // Prevent tipping
     }
 
     private void FixedUpdate()
@@ -72,6 +71,17 @@ public class Car_Manager : MonoBehaviour
                 float steeringRotation = inputHorizontal * maxSteeringAngle;
                 steer.localRotation = Quaternion.Euler(0f, 0f, steeringRotation);
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Detect collision with boundaries
+        if (collision.gameObject.CompareTag("Boundary"))
+        {
+            Debug.Log("Car hit the boundary!");
+            // Optional: Stop or slow down the car
+            currentSpeed = 0;
         }
     }
 }
