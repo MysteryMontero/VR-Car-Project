@@ -24,4 +24,12 @@ public class ChangePivot : MonoBehaviour
             return transform.position; // Default to the object's current position
         }
     }
+    
+    public Transform newPivot; // Drag the empty GameObject (pivot) here in the inspector
+
+    void Update()
+    {
+        // Rotate the car/steering wheel using the new pivot
+        transform.RotateAround(newPivot.position, Vector3.up, 10f * Time.deltaTime);
+    }
 }
