@@ -42,10 +42,9 @@ public class Car_Manager : MonoBehaviour
         inputHorizontal = Input.GetAxis("Horizontal");
 
         // Braking logic
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Space))
         {
-            isBraking = true;
-            ApplyBrake();
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0, brakeStrength * Time.deltaTime);
         }
         else
         {

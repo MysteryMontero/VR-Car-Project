@@ -260,7 +260,7 @@ MonoBehaviour:
   turnSpeed: 50
   drag: 2
   wheelRadius: 1
-  brakeStrength: 0.1
+  brakeStrength: 10
   frontLeftSteering: {fileID: 1209810657}
   frontRightSteering: {fileID: 1554740941}
   Wheel_FL: {fileID: 1082154519}
