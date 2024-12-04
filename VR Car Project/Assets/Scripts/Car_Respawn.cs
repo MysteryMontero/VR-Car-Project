@@ -7,6 +7,7 @@ public class Car_Respawn : MonoBehaviour
 
     public string groundTag = "Ground"; // Tag for ground objects
     public string checkpointTag = "Checkpoint"; // Tag for checkpoint objects
+    public string obstacleTag = "Obstacle"; // Tag for obstacles
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class Car_Respawn : MonoBehaviour
     {
         // Check if the car touches an object tagged as "Ground"
         if (collision.collider.CompareTag(groundTag))
+        {
+            Respawn();
+        }
+
+        if (collision.collider.CompareTag(obstacleTag))
         {
             Respawn();
         }
