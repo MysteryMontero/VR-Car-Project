@@ -73,4 +73,12 @@ public class Car_Obstacle : MonoBehaviour
         // Move to the next direction in the sequence, looping back to the start
         currentDirectionIndex = (currentDirectionIndex + 1) % directions.Length;
     }
+    private void StayOnGround()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
+        {
+            transform.position = hit.point + Vector3.up * 0.1f; // Slight offset to prevent clipping
+        }
+    }
 }
