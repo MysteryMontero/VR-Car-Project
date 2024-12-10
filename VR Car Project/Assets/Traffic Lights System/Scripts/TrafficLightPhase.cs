@@ -30,11 +30,11 @@ namespace HealthbarGames
         // name of the phase
         public string Name;
         // duration of red and yellow light (time between 'Stop' and 'Go' states)
-        public float PhaseStartTime = 2.0f;
+        public float PhaseStartTime = 3.0f;
         // duration of green light (duration of 'Go' state)
-        public float PhaseActiveTime = 10.0f;
+        public float PhaseActiveTime = 8.0f;
         // duration of yellow light (time between 'Go' and 'Stop' states)
-        public float PhaseEndTime = 2.0f;
+        public float PhaseEndTime = 6.0f;
 
         // list of attached traffic lights (all this lights will be always in the same state as this phase)
         public TrafficLightBase[] TrafficLights;
@@ -70,7 +70,7 @@ namespace HealthbarGames
                     break;
 
                 case TrafficLightBase.State.PrepareToGo:
-                    ChangeLightState(true, true, false);
+                    ChangeLightState(true, false, false);
                     break;
 
                 case TrafficLightBase.State.Go:
