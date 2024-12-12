@@ -25,6 +25,7 @@ public class Car_Manager : MonoBehaviour
     private float inputVertical = 0f;
     private float inputHorizontal = 0f;
     private bool isBraking = false;
+    private float inputGasPedal = 0f;
 
     private void Start()
     {
@@ -40,6 +41,10 @@ public class Car_Manager : MonoBehaviour
         // Get input
         inputVertical = Input.GetAxis("Vertical");
         inputHorizontal = Input.GetAxis("Horizontal");
+        //inputGasPedal = Input.GetAxis("RZ");
+        Debug.Log(inputGasPedal);
+
+
 
         // Braking logic
         if (Input.GetKey(KeyCode.Space))
@@ -54,7 +59,7 @@ public class Car_Manager : MonoBehaviour
         if (!isBraking)
         {
             // Accelerate or decelerate
-            if (inputVertical != 0)
+            if (inputVertical > 0)
             {
                 currentSpeed += inputVertical * acceleration * Time.deltaTime;
             }

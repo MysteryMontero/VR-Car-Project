@@ -1,0 +1,54 @@
+{
+    "name": "SteeringWheelInput",
+    "maps": [
+        {
+            "name": "Gas Pedal",
+            "id": "5d67b8bb-5985-46d5-a998-b70f82adbc0b",
+            "actions": [
+                {
+                    "name": "Gas",
+                    "type": "Button",
+                    "id": "f2da23cd-f970-4fed-ae71-d184acce8609",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Break",
+                    "type": "Button",
+                    "id": "a5b4a2bb-6304-4278-8d30-7a50d15a0b52",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "448e049a-05ce-4fe7-a69c-8af3534ef4bc",
+                    "path": "<HID::Thrustmaster Thrustmaster T80 (USB)>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Break",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80dc9522-fac3-4696-8e94-91fedda6ab18",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
